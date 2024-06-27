@@ -9,6 +9,11 @@ export default function Home() {
   const [error, setError] = useState("");
 
   const handleSubmit = () => {
+    if (isSubmitted) {
+      setIsSubmitted(false);
+      console.log("isSubmitted", isSubmitted);
+      return;
+    }
     if (!email) {
       setError("Email field cannot be blank");
     } else {
@@ -18,15 +23,16 @@ export default function Home() {
   };
 
   return (
-    <div className="flex justify-center h-screen items-center">
+    <div className="sm:flex sm:justify-center h-screen sm:items-center">
       {isSubmitted ? (
-        <Success email={email} />
+        <Success email={email} handleSubmit={handleSubmit} />
       ) : (
         <SignUp
           email={email}
           setEmail={setEmail}
           handleSubmit={handleSubmit}
           error={error}
+          className="border-4 border-black"
         />
       )}
     </div>
