@@ -11,7 +11,7 @@ export default function Home() {
   const handleSubmit = () => {
     if (isSubmitted) {
       setIsSubmitted(false);
-      console.log("isSubmitted", isSubmitted);
+      setEmail("");
       return;
     }
     if (!email) {
